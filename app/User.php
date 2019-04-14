@@ -10,6 +10,36 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function roles(){
+        return $this->belongsTo('App\Role', 'role_id');
+    }
+
+
+    public function hasRole($role){
+        if($this->roles()->where('name',$role)->first()) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function authorizeRole($role){
+        if($this->hasRole($role)){
+            return true;
+        }else{
+            abort(401, 'No tienes permiso para hacer eso.');
+        }
+    }
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'role_id' => 1,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
