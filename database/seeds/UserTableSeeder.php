@@ -17,14 +17,14 @@ class UserTableSeeder extends Seeder
         $role_admin = Role::where('name', 'Administrador')->first();
 
         $user = new User();
-        $user->name = 'Eric';
+        $user->username = 'Eric';
         $user->email = 'guest@gmail.com';
         $user->password = bcrypt('12345678');
         $user->roles()->associate($role_guest);
         $user->save();
 
         $user = new User();
-        $user->name = 'Eric';
+        $user->username = 'Eric';
         $user->email = 'admin@gmail.com';
         $user->password = bcrypt('12345678');
         $user->roles()->associate($role_admin);
