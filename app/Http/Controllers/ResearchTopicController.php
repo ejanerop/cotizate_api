@@ -14,7 +14,7 @@ class ResearchTopicController extends Controller
      */
     public function index()
     {
-        echo 'alo mi fren';
+        return view('research_topic.index');
     }
 
     /**
