@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\ResourceType;
 
 class ResourceTypeTableSeeder extends Seeder
 {
@@ -11,6 +12,20 @@ class ResourceTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $type = new ResourceType();
+        $type->resource_type = 'Texto';
+        $type->save();
+
+        $type = new ResourceType();
+        $type->resource_type = 'Imagen';
+        $type->save();
+
+        $type = new ResourceType();
+        $type->resource_type = 'Audio';
+        $type->save();
+
+        $type = new ResourceType();
+        $type->resource_type = 'Video';
+        $type->save();
     }
 }
