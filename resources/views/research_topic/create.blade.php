@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Nueva Temática') }}</div>
 
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="/research_topic" enctype="multipart/form-data">
                         <div class="form-body">
                             <div class="form-group">
                                 <label for="research_topic">Temática de investigación</label>
