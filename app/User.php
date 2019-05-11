@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cotizate;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,7 +11,19 @@ class User extends Authenticatable
     use Notifiable;
 
     public function roles(){
-        return $this->belongsTo('App\Role', 'role_id');
+        return $this->belongsTo('Cotizate\Role', 'role_id');
+    }
+
+    public function access_nano(){
+        return $this->belongsTo('Cotizate\AccessNano', 'access_nano_id');
+    }
+
+    public function user_nano(){
+        return $this->belongsTo('Cotizate\UserNano', 'user_nano_id');
+    }
+
+    public function incomes(){
+        return $this->hasmany('Cotizate\Income', 'user_id');
     }
 
 

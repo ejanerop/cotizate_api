@@ -15,11 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('username')->unique();
             $table->string('password');
+            $table->ipAddress('ip_address');
+            $table->unsignedBigInteger('access_nano_id');
+            $table->unsignedBigInteger('user_nano_id');
             $table->unsignedBigInteger('role_id');
+            $table->foreign('access_nano_id')->references('id')->on('access_nanos');
+            $table->foreign('user_nano_id')->references('id')->on('user_nanos');
             $table->foreign('role_id')->references('id')->on('roles');
             $table->rememberToken();
             $table->timestamps();

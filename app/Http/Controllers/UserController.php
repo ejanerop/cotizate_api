@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cotizate\Http\Controllers;
 
-use App\ResearchTopic;
+use Cotizate\Role;
 use Illuminate\Http\Request;
+use Cotizate\User;
 
-class ResearchTopicController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class ResearchTopicController extends Controller
      */
     public function index()
     {
-        return view('research_topic.index', ['research_topics'=> ResearchTopic::get()]);
+        return view('user.index', ['users'=> User::with(['roles', 'access_nano', 'user_nano', 'incomes' => function ($query) {
+            $query->where('year', '2019');
+        }])->get()]);
     }
 
     /**
@@ -24,7 +27,7 @@ class ResearchTopicController extends Controller
      */
     public function create()
     {
-        return view('research_topic.create');
+        return view('user.create', ['roles' => Role::get()]);
     }
 
     /**
@@ -35,19 +38,16 @@ class ResearchTopicController extends Controller
      */
     public function store(Request $request)
     {
-        $research_topic = new ResearchTopic();
-        $research_topic->research_topic = $request->research_topic;
-        $research_topic->description = $request->description;
-        $research_topic->save();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ResearchTopic  $researchTopic
+     * @param  \Cotizate\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(ResearchTopic $researchTopic)
+    public function show(User $user)
     {
         //
     }
@@ -55,10 +55,10 @@ class ResearchTopicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ResearchTopic  $researchTopic
+     * @param  \Cotizate\User $userNano
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResearchTopic $researchTopic)
+    public function edit(User $user)
     {
         //
     }
@@ -67,21 +67,20 @@ class ResearchTopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ResearchTopic  $researchTopic
+     * @param  \Cotizate\UserNano  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResearchTopic $researchTopic)
+    public function update(Request $request, User $user)
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ResearchTopic  $researchTopic
+     * @param  \Cotizate\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResearchTopic $researchTopic)
+    public function destroy(User $user)
     {
         //
     }

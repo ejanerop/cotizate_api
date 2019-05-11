@@ -1,5 +1,8 @@
 <?php
 
+use \Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('research_topic', 'ResearchTopicController');
-
 Route::resource('user', 'UserController');
+
+Route::resource('user_nano', 'UserNanoController');
+
+Route::resource('user_admin', 'UserAdminController');
