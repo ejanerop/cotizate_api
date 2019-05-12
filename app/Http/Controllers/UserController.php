@@ -2,7 +2,9 @@
 
 namespace Cotizate\Http\Controllers;
 
+use Cotizate\AccessNano;
 use Cotizate\Role;
+use Cotizate\UserNano;
 use Illuminate\Http\Request;
 use Cotizate\User;
 
@@ -27,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create', ['roles' => Role::get()]);
+        return view('user.create', ['roles' => Role::all(), 'access_nanos' => AccessNano::all(), 'user_nanos' => UserNano::all()]);
     }
 
     /**

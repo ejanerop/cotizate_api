@@ -13,12 +13,10 @@
                             <th>Dirección IP</th>
                             <th>Nano</th>
                             <th>Nano de acceso</th>
-                            <th>Ene</th>
-                            <th>Feb</th>
-                            <th>Mar</th>
                             <th>Abr</th>
                             <th>May</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,13 +27,19 @@
                             <td>{{$user->user_nano->name}}</td>
                             <td>{{$user->access_nano->name}}</td>
                             @foreach($user->incomes as $income)
-                                <td>{{$income->jan}}</td>
-                                <td>{{$income->feb}}</td>
-                                <td>{{$income->mar}}</td>
                                 <td>{{$income->apr}}</td>
                                 <td>{{$income->may}}</td>
                                 <td><span class="label {{$income->may == 0?'label-danger':'label-success'}}">{{$income->may == 0?'Atrasado':'Al día'}}</span></td>
                             @endforeach
+                            <td>
+                            <form action="{{route('user_admin.destroy', ['id' => $user->id])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{route('user_admin.show', ['user' => $user->id])}}" class="btn btn-xs btn-success"><span class="fa fa-eye" style="margin-right: 2px"></span> Mostrar</a>
+                                <a href="{{route('user_admin.edit', ['user' => $user->id])}}" class="btn btn-xs btn-primary"><span class="fa fa-edit" style="margin-right: 2px"></span> Editar</a>
+                                <button type="submit" class="btn btn-xs btn-danger"><span class="fa fa-remove" style="margin-right: 2px"></span> Eliminar</button>
+                            </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

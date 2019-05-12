@@ -18,6 +18,7 @@
                         <th>Mar</th>
                         <th>Abr</th>
                         <th>May</th>
+                        <th>Jun</th>
                         <th>Estado</th>
                     </tr>
                     </thead>
@@ -34,6 +35,7 @@
                                 <td>{{$income->mar}}</td>
                                 <td>{{$income->apr}}</td>
                                 <td>{{$income->may}}</td>
+                                <td>{{$income->jun}}</td>
                                 <td><span class="label {{$income->may == 0?'label-danger':'label-success'}}">{{$income->may == 0?'Atrasado':'Al día'}}</span></td>
                             @endforeach
                         </tr>

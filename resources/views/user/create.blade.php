@@ -36,6 +36,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-laptop"></i></span>
+                                    <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-wifi"></i> </span>
                                     <select id="access_nano" name="access_nano" class="form-control">
                                         @foreach($access_nanos as $nano)
@@ -81,10 +87,15 @@
         </div>
     </section>
 
+
+    <script src="{{asset('input-mask/jquery.inputmask.js')}}"></script>
+    <script src="{{asset('input-mask/jquery.inputmask.date.extensions.js')}}"></script>
+    <script src="{{asset('input-mask/jquery.inputmask.extensions.js')}}"></script>
     <script>
         $('li.li').removeClass('active');
         $('li#user').addClass('active');
         $('li#userCreate').addClass('active');
+        $("[data-mask]").inputmask();
         $('#user').validate({
             rules: {
                 username: {
@@ -125,5 +136,6 @@
             }
         });
     </script>
+
 
 @endsection

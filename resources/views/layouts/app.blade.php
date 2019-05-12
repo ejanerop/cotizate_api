@@ -97,7 +97,7 @@
         <section class="sidebar">
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li id="start" class="li active"><a href="/home"><span>Inicio</span><span class="glyphicon glyphicon-home pull-right"></span></a></li>
+                <li id="start" class="li active"><a href="{{route('user.create')}}"><span>Inicio</span><span class="glyphicon glyphicon-home pull-right"></span></a></li>
 
                 <li class="header">Administración</li>
                 <li id="user" class="li treeview">
@@ -107,11 +107,11 @@
                         <li id="userList"><a href="{{route('user.index')}}">Lista de usuarios <span class="glyphicon glyphicon-list pull-right"></span></a></li>
                     </ul>
                 </li>
-                <li id="user" class="li treeview">
+                <li id="nanos" class="li treeview">
                     <a href="#"><span>Nanos</span><span class="glyphicon glyphicon-magnet pull-right"></span></a>
                        <ul class="treeview-menu">
-                            <li id="userCreate"><a href="{{route('user_nano.create')}}">Nuevo Nano<span class="glyphicon glyphicon-plus pull-right"></span></a></li>
-                            <li id="userList"><a href="{{route('user_nano.index')}}">Lista de Nanos<span class="glyphicon glyphicon-list pull-right"></span></a></li>
+                            <li id="nanosCreate"><a href="{{route('user_nano.create')}}">Nuevo Nano<span class="glyphicon glyphicon-plus pull-right"></span></a></li>
+                            <li id="nanosList"><a href="{{route('user_nano.index')}}">Lista de Nanos<span class="glyphicon glyphicon-list pull-right"></span></a></li>
                        </ul>
                 </li>
             </ul><!-- /.sidebar-menu -->
