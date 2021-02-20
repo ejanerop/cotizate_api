@@ -120,10 +120,6 @@ class ApiController extends Controller
 
             $new = PortalNew::find($request->input('id'));
 
-            $validate = Validator::make($new,[
-                'image' => ['mimetypes:image/*']
-                ])->validate();
-
             if ($new) {
                 $new->title = $request->input('title');
                 $new->description = $request->input('description');
