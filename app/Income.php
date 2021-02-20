@@ -29,7 +29,12 @@ class Income extends Model
         'total' => 0
     ];
 
-    public function user(){
-        return $this->belongsTo('\Cotizate\User', 'user_id');
+
+    public function getSumAttribute(){
+        $sum = $this->jan + $this->feb + $this->mar + $this->apr
+            + $this->may + $this->jun + $this->jul + $this->ago
+            + $this->sep + $this->oct + $this->nov + $this->dec;
+
+        return $sum;
     }
 }

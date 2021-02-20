@@ -3,44 +3,18 @@
 namespace Cotizate;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    public function roles(){
-        return $this->belongsTo('Cotizate\Role', 'role_id');
-    }
+    public function generateToken(){
+        $this->api_token = Str::random(60);
+        $this->save();
 
-    public function access_nano(){
-        return $this->belongsTo('Cotizate\AccessNano', 'access_nano_id');
-    }
-
-    public function user_nano(){
-        return $this->belongsTo('Cotizate\UserNano', 'user_nano_id');
-    }
-
-    public function incomes(){
-        return $this->hasmany('Cotizate\Income', 'user_id');
-    }
-
-
-    public function hasRole($role){
-        if($this->roles()->where('name',$role)->first()) {
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function authorizeRole($role){
-        if($this->hasRole($role)){
-            return true;
-        }else{
-            abort(401, 'No tienes permiso para hacer eso.');
-        }
+        return $this->api_token;
     }
 
     /**
@@ -49,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $attributes = [
-        'role_id' => 1,
+
     ];
 
     /**
@@ -58,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'password',
     ];
 
     /**

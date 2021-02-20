@@ -1,7 +1,6 @@
 <?php
 
 use \Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +14,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('user', 'UserController');
-
-Route::resource('user_nano', 'UserNanoController');
-
-Route::resource('user_admin', 'UserAdminController');

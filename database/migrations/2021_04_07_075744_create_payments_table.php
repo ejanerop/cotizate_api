@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserNanosTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserNanosTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_nanos', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->ipAddress('ip_address');
-            $table->string('model');
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->tinyInteger('cant');
+            $table->tinyInteger('month');
+            $table->integer('year');
             $table->timestamps();
         });
     }
@@ -29,8 +31,6 @@ class CreateUserNanosTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_nanos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('payments');
     }
 }

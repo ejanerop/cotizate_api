@@ -11,9 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AccessNanoTableSeeder::class);
-        $this->call(UserNanoTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(ClientTableSeeder::class);
     }
 }

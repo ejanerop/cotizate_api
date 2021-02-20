@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccessNanosTable extends Migration
+class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateAccessNanosTable extends Migration
      */
     public function up()
     {
-        Schema::create('access_nanos', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('title');
+            $table->string('description');
+            $table->string('src')->nullable($value = true);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateAccessNanosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('access_nanos');
+        Schema::dropIfExists('news');
     }
 }
