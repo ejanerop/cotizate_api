@@ -16,10 +16,7 @@ use Illuminate\Validation\Rule;
 class ApiController extends Controller
 {
 
-    public function __construct()
-    {
-        //$this->middleware('cors');
-    }
+    public function __construct(){ }
 
     public function getFile($folder, $file)
     {

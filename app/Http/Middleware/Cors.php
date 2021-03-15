@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Response;
 
 class Cors
 {
-  public function handle($request, Closure $next)
-  {
-    header("Access-Control-Allow-Origin: *");
+    public function handle($request, Closure $next)
+    {
+        header("Access-Control-Allow-Origin: *");
 
         // ALLOW OPTIONS METHOD
         $headers = [
@@ -21,7 +21,7 @@ class Cors
 
         $response = $next($request);
         foreach($headers as $key => $value)
-            $response->header($key, $value);
+        $response->header($key, $value);
         return $response;
-}
+    }
 }
